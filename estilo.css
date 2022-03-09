@@ -23,6 +23,7 @@
     }
 }
 div#Dpad.DPad{
+    z-index: 1;
     margin: 10rem auto;
 }
 body {
@@ -37,30 +38,54 @@ body {
   z-index: 1;
   margin: 37rem 0rem;
 }
+div#ECar.Enemy {
+    z-index: 1;
+    margin: -50rem 37rem;
+  }
 .light {
   position: relative;
   margin: -12.79rem 5.5rem;
 }
-
-.Up{
-    margin: -10rem auto;
+#touchButtons{
     position: absolute;
+    z-index: 1;
+    width: 10rem;
+    height: 11rem;
+}
+.Up{
+    position: absolute;
+    margin: -10rem auto;
+}
+.upArrow{
+    margin: -10rem 1.9rem;
 }
 .Down{
     position: absolute;
     margin: 14rem auto;
 }
+.downArrow{
+    margin: 14rem 2rem;
+}
 .Left{
     position: absolute;
     margin: 2rem -12rem;
+}
+.leftArrow{
+    margin: 2rem -10.2rem;
 }
 .Right{
     position: absolute;
     margin: 2rem 12rem;
 }
+.rightArrow{
+    margin: 2rem 13.8rem;
+}
 .Ataque{
     position: absolute;
     margin: 2rem 0rem;
+}
+.attack{
+    margin: 2rem 1.9rem;
 }
 #controller {
   z-index: 2;

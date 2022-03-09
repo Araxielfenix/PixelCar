@@ -10,6 +10,7 @@ let check = false;
 window.onload = function () {
     Honk();
     document.getElementById("carLight").style.display = "none";
+    document.getElementById("eC").style.display = "none";
     document.body.style.overflow = "hidden";
     // disable mouse selection 
     document.onselectstart = function () {
@@ -32,21 +33,21 @@ setInterval(function () {
     }, 125);
 }, 250);
 
-bgsound.addEventListener('ended', function() {
+bgsound.addEventListener('ended', function () {
     this.currentTime = 0;
     this.play();
 }, false);
 
 
-carEngine.addEventListener('timeupdate', function(){
+carEngine.addEventListener('timeupdate', function () {
     var buffer = .55;
-    if(this.currentTime > this.duration - buffer){
+    if (this.currentTime > this.duration - buffer) {
         this.currentTime = 0
         this.play()
     }
 });
 
-function Honk(){
+function Honk() {
     document.getElementById("carLight").style.display = "block";
     document.getElementById("honk").pause();
     document.getElementById("honk").currentTime = 0;
@@ -54,6 +55,82 @@ function Honk(){
     document.getElementById("honk").play();
 }
 
+function dpadUp() {
+    if (motorsound == 0) {
+        bgsound.play();
+        carEngine.play();
+        motorsound++;
+    }
+    switch (movement[1]) {
+        case 26:
+            document.getElementsByClassName("car")[0].style.margin = 13 + "rem " + movement[0] + "rem";
+            movement[1] = 13;
+            break;
+        case 13:
+            document.getElementsByClassName("car")[0].style.margin = 2 + "rem " + movement[0] + "rem";
+            movement[1] = 2;
+            break;
+    }
+}
+function dpadDown() {
+    if (motorsound == 0) {
+        bgsound.play();
+        carEngine.play();
+        motorsound++;
+    }
+    switch (movement[1]) {
+        case 2:
+            document.getElementsByClassName("car")[0].style.margin = 13 + "rem " + movement[0] + "rem";
+            movement[1] = 13;
+            break;
+        case 13:
+            document.getElementsByClassName("car")[0].style.margin = 26 + "rem " + movement[0] + "rem";
+            movement[1] = 26;
+            break;
+    }
+}
+function dpadRight() {
+    if (motorsound == 0) {
+        bgsound.play();
+        carEngine.play();
+        motorsound++;
+    }
+    switch (movement[1]) {
+        case 2:
+            document.getElementsByClassName("car")[0].style.margin = 2 + "rem " + ++movement[0] + "rem";
+            break;
+        case 13:
+            document.getElementsByClassName("car")[0].style.margin = 13 + "rem " + ++movement[0] + "rem";
+            break;
+        case 26:
+            document.getElementsByClassName("car")[0].style.margin = 26 + "rem " + ++movement[0] + "rem";
+            break;
+    }
+}
+function dpadLeft() {
+    if (motorsound == 0) {
+        bgsound.play();
+        carEngine.play();
+        motorsound++;
+    }
+    switch (movement[1]) {
+        case 2:
+            document.getElementsByClassName("car")[0].style.margin = 2 + "rem " + --movement[0] + "rem";
+            break;
+        case 13:
+            document.getElementsByClassName("car")[0].style.margin = 13 + "rem " + --movement[0] + "rem";
+            break;
+        case 26:
+            document.getElementsByClassName("car")[0].style.margin = 26 + "rem " + --movement[0] + "rem";
+            break;
+    }
+}
+function dpadAttack() {
+    Honk();
+    setInterval(function () {
+        document.getElementById("carLight").style.display = "none";
+    }, 650);
+}
 document.onkeydown = function (e) {
     if (e.keyCode != 0 && motorsound == 0) {
         bgsound.play();
