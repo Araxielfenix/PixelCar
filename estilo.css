@@ -1,143 +1,175 @@
 @keyframes velocidadLineas {
-  0% {left: 4rem;}
-  100% {left: -9rem;}
+  0% {
+    left: 4rem;
+  }
+  100% {
+    left: -9rem;
+  }
 }
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    #DPad { display: block; }  /* show it on small screens */
-    #controller { display: none; }  /* hide it on small screens */
-  }
-  
-  @media screen and (min-width: 401px) and (max-width: 1024px) {
-    #DPad { display: none; }   /* hide it elsewhere */
-    #controller { display: block; }  /* show it on large screens */
-  }
+@media only screen and (min-width: 768px) {
+    div#controller.controles {
+        display: grid;
+    }
+    div#Dpad.DPad{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    div#controller.controles {
+        display: none;
+    }
+    div#Dpad.DPad{
+        display: block;
+    }
+}
+div#Dpad.DPad{
+    margin: 10rem auto;
+}
 body {
-    background-color: slategray;
+  background-color: slategray;
 }
-#area{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(12rem, auto);
+#area {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(12rem, auto);
 }
-.car{
-    z-index: 1;
-    margin: 37rem 0rem;
+.car {
+  z-index: 1;
+  margin: 37rem 0rem;
 }
 .light {
-    position: relative;
-    margin: -12.79rem 5.5rem;
+  position: relative;
+  margin: -12.79rem 5.5rem;
 }
-#Dpad{
-    display: none;
-}
-#controller{
-    z-index: 2;
-    border-style: dashed;
-    border-color: white;
-    width: 11rem;
-    height: 8rem;
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(12rem, auto);
-}
-.upDown{
-    grid-column: 1;
-    grid-row: 1;
-}
-.leftRight{
-    grid-column: 2;
-    grid-row: 1;
-}
-div#cuadroControles.controllerSquare{
+
+.Up{
+    margin: -10rem auto;
     position: absolute;
-    margin: 45rem 26%;
+}
+.Down{
+    position: absolute;
+    margin: 14rem auto;
+}
+.Left{
+    position: absolute;
+    margin: 2rem -12rem;
+}
+.Right{
+    position: absolute;
+    margin: 2rem 12rem;
+}
+.Ataque{
+    position: absolute;
+    margin: 2rem 0rem;
+}
+#controller {
+  z-index: 2;
+  border-style: dashed;
+  border-color: white;
+  width: 11rem;
+  height: 8rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(12rem, auto);
+}
+.upDown {
+  grid-column: 1;
+  grid-row: 1;
+}
+.leftRight {
+  grid-column: 2;
+  grid-row: 1;
+}
+div#cuadroControles.controllerSquare {
+    position: absolute;
+    margin: 45rem 29%;
     z-index: -1;
 }
-#carretera{
-    position: absolute;
-    border-style: solid;
-    border-top-width: 1rem;
-    border-bottom-width: 1rem;
-    border-left-width: 0rem;
-    border-right-width: 0rem;
-    border-color: white;
-    background-color: rgb(48, 47, 56);
-    width: 100%;
-    height: 10rem;
-    margin: 4.9rem -0.5rem;
-    z-index: -1;
-    grid-column: 1;
-    grid-row: 1;
+#carretera {
+  position: absolute;
+  border-style: solid;
+  border-top-width: 1rem;
+  border-bottom-width: 1rem;
+  border-left-width: 0rem;
+  border-right-width: 0rem;
+  border-color: white;
+  background-color: rgb(48, 47, 56);
+  width: 100%;
+  height: 10rem;
+  margin: 4.9rem -0.5rem;
+  z-index: -1;
+  grid-column: 1;
+  grid-row: 1;
 }
-#carretera1{
-    position: absolute;
-    border-style: solid;
-    border-top-width: 1rem;
-    border-bottom-width: 1rem;
-    border-left-width: 0rem;
-    border-right-width: 0rem;
-    border-color: white;
-    background-color: rgb(48, 47, 56);
-    width: 100%;
-    margin: 15.899999999999999rem -0.5rem;
-    z-index: -1;
-    grid-column: 1;
-    grid-row: 2;
+#carretera1 {
+  position: absolute;
+  border-style: solid;
+  border-top-width: 1rem;
+  border-bottom-width: 1rem;
+  border-left-width: 0rem;
+  border-right-width: 0rem;
+  border-color: white;
+  background-color: rgb(48, 47, 56);
+  width: 100%;
+  margin: 15.899999999999999rem -0.5rem;
+  z-index: -1;
+  grid-column: 1;
+  grid-row: 2;
 }
-#carretera2{
-    position: absolute;
-    border-style: solid;
-    border-top-width: 1rem;
-    border-bottom-width: 1rem;
-    border-left-width: 0rem;
-    border-right-width: 0rem;
-    border-color: white;
-    background-color: rgb(48, 47, 56);
-    width: 100%;
-    margin: 28.9rem -0.5rem;
-    z-index: -1;
-    grid-column: 1;
-    grid-row: 3;
+#carretera2 {
+  position: absolute;
+  border-style: solid;
+  border-top-width: 1rem;
+  border-bottom-width: 1rem;
+  border-left-width: 0rem;
+  border-right-width: 0rem;
+  border-color: white;
+  background-color: rgb(48, 47, 56);
+  width: 100%;
+  margin: 28.9rem -0.5rem;
+  z-index: -1;
+  grid-column: 1;
+  grid-row: 3;
 }
-.lines{
-    position: relative;
-    left: 4rem;
-    margin: auto -4rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(12rem, auto);
-    animation: velocidadLineas 125ms infinite linear;
+.lines {
+  position: relative;
+  left: 4rem;
+  margin: auto -4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(12rem, auto);
+  animation: velocidadLineas 125ms infinite linear;
 }
-.whiteLines{
-    background-color: white;
-    width: 15rem;
-    height: 10%;
-    margin: 4.2rem auto;
-    grid-column: 1;
-    grid-row: 1;
+.whiteLines {
+  background-color: white;
+  width: 15rem;
+  height: 10%;
+  margin: 4.2rem auto;
+  grid-column: 1;
+  grid-row: 1;
 }
-.whiteLines1{
-    background-color: white;
-    width: 15rem;
-    height: 10%;
-    margin: 4.2rem auto;
-    grid-column: 2;
-    grid-row: 1;
+.whiteLines1 {
+  background-color: white;
+  width: 15rem;
+  height: 10%;
+  margin: 4.2rem auto;
+  grid-column: 2;
+  grid-row: 1;
 }
-.whiteLines2{
-    background-color: white;
-    width: 15rem;
-    height: 10%;
-    margin: 4.2rem auto;
-    grid-column: 3;
-    grid-row: 1;
+.whiteLines2 {
+  background-color: white;
+  width: 15rem;
+  height: 10%;
+  margin: 4.2rem auto;
+  grid-column: 3;
+  grid-row: 1;
 }
-.whiteLines3{
-    background-color: white;
-    width: 15rem;
-    height: 10%;
-    margin: 4.2rem auto;
-    grid-column: 4;
-    grid-row: 1;
+.whiteLines3 {
+  background-color: white;
+  width: 15rem;
+  height: 10%;
+  margin: 4.2rem auto;
+  grid-column: 4;
+  grid-row: 1;
 }
