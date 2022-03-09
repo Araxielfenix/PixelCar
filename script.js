@@ -5,6 +5,7 @@ bgsound.volume = 0.15;
 carEngine.volume = 0.5;
 carEngine.preload = true;
 var motorsound = 0;
+let check = false;
 
 window.onload = function () {
     Honk();
