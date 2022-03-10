@@ -57,11 +57,14 @@ carEngine.addEventListener('timeupdate', function () {
 });
 
 function Honk() {
-    document.getElementById("carLight").style.display = "block";
-    document.getElementById("honk").pause();
-    document.getElementById("honk").currentTime = 0;
-    document.getElementById("honk").volume = 0.2;
-    document.getElementById("honk").play();
+    setTimeout(function () {
+        document.getElementById("carLight").style.display = "block";
+        document.getElementById("honk").pause();
+        document.getElementById("honk").currentTime = 0;
+        document.getElementById("honk").volume = 0.2;
+        document.getElementById("honk").play();
+    }, 500);
+    document.getElementById("carLight").style.display = "none";
 }
 
 function dpadUp() {
@@ -142,9 +145,6 @@ function dpadLeft() {
 }
 function dpadAttack() {
     Honk();
-    setInterval(function () {
-        document.getElementById("carLight").style.display = "none";
-    }, 650);
 }
 document.onkeydown = function (e) {
     carOutOfScreen();
@@ -215,7 +215,7 @@ document.onkeyup = function (e) {
         document.getElementById("carLight").style.display = "none";
     }
 }
-function enemySpawn(){
+function enemySpawn() {
     // Variable random del 1 al 3 para que el enemigo salga de una de las 3 posiciones.
     var random = Math.floor(Math.random() * 3) + 1;
     console.log(random);
@@ -240,7 +240,7 @@ function enemySpawn(){
 }
 // Si la imagen enemy está visible y la imagen carLight está visible.
 function enemyCollision() {
-        // Si la posición de la imagen carLight es igual a la posición de la imagen enemy.
+    // Si la posición de la imagen carLight es igual a la posición de la imagen enemy.
     if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
         if (document.getElementById("eC").style.display == "block" && document.getElementById("carLight").style.display == "block") {
             scorePoints = 10 + scorePoints;
@@ -248,6 +248,7 @@ function enemyCollision() {
             document.getElementById("carLight").style.display = "none";
             // Se oculta la imagen enemy.
             document.getElementById("eC").style.display = "none";
+            document.getElementById("Explode").style.margin = document.getElementById("eC").style.margin;
             // Se muestra la imagen explosion.
             document.getElementById("Explode").style.display = "block";
             // Se reproduce el sonido de explosion.
@@ -257,7 +258,17 @@ function enemyCollision() {
             setTimeout(function () {
                 document.getElementById("Explode").style.display = "none";
             }, 1000);
+            i = 100;
             enemySpawn();
+        }
+        // Si la imagen carLight no está visible y la imagen enemy está visible.
+        if (document.getElementById("carLight").style.display == "none" && document.getElementById("eC").style.display == "block") {
+            scorePoints - 10;
+            document.getElementById("puntos").value = scorePoints;
+            if (scorePoints == 0) {
+                alert("Game Over");
+                location.reload();
+            }
         }
     }
 }
@@ -265,17 +276,17 @@ function enemyCollision() {
 setInterval(function () {
     setTimeout(function () {
         // Si el enemigo llega a la posición 0 o -1, se oculta.
-    if (i <= -23) {
-        i = 100;
-        document.getElementById("eC").style.display = "none";
-        enemySpawn();
-    }
-    if (document.getElementById("eC").style.display == "block") {
-        i--
-        document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
-        console.log(document.getElementById("eC").style.margin);
-        enemyCollision();
-    }
+        if (i <= -23) {
+            i = 100;
+            document.getElementById("eC").style.display = "none";
+            enemySpawn();
+        }
+        if (document.getElementById("eC").style.display == "block") {
+            i--
+            document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
+            console.log(document.getElementById("eC").style.margin);
+            enemyCollision();
+        }
     }, 250);
 }, 50);
 
@@ -292,7 +303,7 @@ function carOutOfScreen() {
         if (movement[0] > 70) {
             movement[0] = 70;
             document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
-        }   
+        }
     }
     // Si la resolución de la pantalla es menor a 800px.
     if (window.innerWidth < 950) {
