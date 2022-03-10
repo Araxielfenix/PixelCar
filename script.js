@@ -261,8 +261,13 @@ function enemyCollision() {
             i = 100;
             enemySpawn();
         }
-        // Si la imagen carLight no está visible y la imagen enemy está visible.
-        if (document.getElementById("carLight").style.display == "none" && document.getElementById("eC").style.display == "block") {
+    }
+}
+// Si carro choca con enemigo.
+function carCollision() {
+    // Si la posición de la imagen nC es igual a la posición de la imagen enemy.
+    if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
+        if (document.getElementById("nC").style.display == "block" && document.getElementById("eC").style.display == "block") {
             scorePoints - 10;
             document.getElementById("puntos").value = scorePoints;
             if (scorePoints == 0) {
