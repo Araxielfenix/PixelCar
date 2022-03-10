@@ -269,9 +269,12 @@ function enemyCollision() {
 function playerCollision() {
     if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
         if (document.getElementById("carLight").style.display == "none") {
-            scorePoints - 10;
+            scorePoints = scorePoints - 10;
             document.getElementById("puntos").value = scorePoints -10;
-            if (scorePoints == 0) {
+            if(scorePoints == 0){
+                document.getElementById("puntos").style.color = red;
+            }
+            if (scorePoints < 0) {
                 alert("Game Over");
                 location.reload();
             }
@@ -300,11 +303,10 @@ setInterval(function () {
             enemySpawn();
         }
         if (document.getElementById("eC").style.display == "block") {
-            i--;
-            document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
-            console.log(document.getElementById("eC").style.margin);
             enemyCollision();
             playerCollision();
+            i--;
+            document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
         }
     }, 250);
 }, 50);
