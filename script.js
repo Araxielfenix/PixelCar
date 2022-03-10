@@ -137,12 +137,12 @@ function dpadAttack() {
     }, 650);
 }
 document.onkeydown = function (e) {
+    carOutOfScreen();
     if (e.keyCode != 0 && motorsound == 0) {
         bgsound.play();
         carEngine.play();
         motorsound++;
         enemySpawn();
-        carOutOfScreen();
     }
     if (e.keyCode == 87 || e.keyCode == 119) {
         switch (movement[1]) {
@@ -248,13 +248,34 @@ function enemyCollision() {
 }
 // prevenir que el carro se salga de la pantalla.
 function carOutOfScreen() {
-    if (movement[0] < -1) {
-        movement[0] = -1;
-        document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
-
+    // imprime en consola la posición de la imagen car.
+    console.log(document.getElementsByClassName("car")[0].style.margin);
+    // Si la resolución de la pantalla es mayor a 800px.
+    if (window.innerWidth > 1000) {
+        // imprime en consola la posición de la imagen car.
+        console.log(document.getElementsByClassName("car")[0].style.margin);
+        // Si la posición de la imagen car es menor a 0.
+        if (movement[0] < 0) {
+            movement[0] = -1;
+            document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+        }
+        // Si la posición de la imagen car es mayor a 100.
+        if (movement[0] > 70) {
+            movement[0] = 70;
+            document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+        }   
     }
-    if (movement[0] > 65) {
-        movement[0] = 65;
-        document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+    // Si la resolución de la pantalla es menor a 800px.
+    if (window.innerWidth < 950) {
+        // Si la posición de la imagen car es menor a 0.
+        if (movement[0] < 0) {
+            movement[0] = -1;
+            document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+        }
+        // Si la posición de la imagen car es mayor a 100.
+        if (movement[0] > 40) {
+            movement[0] = 40;
+            document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+        }
     }
 }
