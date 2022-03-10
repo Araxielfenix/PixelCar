@@ -240,9 +240,9 @@ function enemySpawn(){
 }
 // Si la imagen enemy está visible y la imagen carLight está visible.
 function enemyCollision() {
-    if (document.getElementById("eC").style.display == "block" && document.getElementById("carLight").style.display == "block") {
         // Si la posición de la imagen carLight es igual a la posición de la imagen enemy.
-        if (document.getElementById("carLight").style.margin == document.getElementById("eC").style.margin) {
+    if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
+        if (document.getElementById("eC").style.display == "block" && document.getElementById("carLight").style.display == "block") {
             scorePoints = 10 + scorePoints;
             // Se oculta la imagen carLight.
             document.getElementById("carLight").style.display = "none";
