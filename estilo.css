@@ -54,6 +54,7 @@ h1{
   font-weight: bolder;
   font-size: 5rem;
   text-align: center;
+  margin: -3.7rem 0rem;
 }
 div#Dpad.DPad{
     z-index: 1;
@@ -96,13 +97,14 @@ body {
   grid-auto-rows: minmax(12rem, auto);
 }
 .car {
+  position: absolute;
   z-index: 1;
   margin: 37rem 0rem;
 }
 div#ECar.Enemy {
-    z-index: 1;
-    margin: -50rem 37rem;
-  }
+  position: absolute;
+  z-index: 1;
+}
 .light {
   position: relative;
   margin: -12.79rem 5.5rem;

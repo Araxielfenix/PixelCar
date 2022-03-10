@@ -1,16 +1,23 @@
 let movement = [1, 26];
 var bgsound = new Audio('sounds/Highway.mp3');
 var carEngine = new Audio('sounds/Car-engine-loop2.mp3');
+var explosion = new Audio('sounds/Explosion.mp3');
+let enemyChoose = 0;
 bgsound.volume = 0.15;
 carEngine.volume = 0.5;
+explosion.volume = 0.2;
 carEngine.preload = true;
 var motorsound = 0;
 let check = false;
+let scorePoints = 0;
+let i = 100;
 
 window.onload = function () {
-    Honk();
+    document.getElementById("puntos").value = 0;
     document.getElementById("carLight").style.display = "none";
     document.getElementById("eC").style.display = "none";
+    document.getElementById("Explode").style.display = "none";
+    Honk();
     document.body.style.overflow = "hidden";
     // disable mouse selection 
     document.onselectstart = function () {
@@ -28,8 +35,10 @@ document.ondragstart = function () {
 
 setInterval(function () {
     document.getElementById("nC").src = "./sprite/carSpeed2.png";
+    document.getElementById("eC").src = "./sprite/ECar.png";
     setTimeout(function () {
         document.getElementById("nC").src = "./sprite/carSpeed.png";
+        document.getElementById("eC").src = "./sprite/ECarSpeed.png";
     }, 125);
 }, 250);
 
@@ -79,6 +88,7 @@ function dpadDown() {
         bgsound.play();
         carEngine.play();
         motorsound++;
+        enemySpawn();
     }
     switch (movement[1]) {
         case 2:
@@ -208,56 +218,75 @@ document.onkeyup = function (e) {
 function enemySpawn(){
     // Variable random del 1 al 3 para que el enemigo salga de una de las 3 posiciones.
     var random = Math.floor(Math.random() * 3) + 1;
+    console.log(random);
     // Si el random es 1, el enemigo aparecerá en la posición 1.
     if (random == 1) {
-        document.getElementsByClassName("enemy")[0].style.display = "block";
-        document.getElementsByClassName("enemy")[0].style.margin = "-60rem 37rem;";
+        enemyChoose = 26;
+        document.getElementById("eC").style.display = "block";
+        document.getElementById("eC").style.margin = enemyChoose + "rem " + "70rem";
     }
     // Si el random es 2, el enemigo aparecerá en la posición 2.
     if (random == 2) {
-        document.getElementsByClassName("enemy")[0].style.display = "block";
-        document.getElementsByClassName("enemy")[0].style.margin = "-73rem 37rem;";
+        enemyChoose = 13;
+        document.getElementById("eC").style.display = "block";
+        document.getElementById("eC").style.margin = enemyChoose + "rem " + "70rem";
     }
     // Si el random es 3, el enemigo aparecerá en la posición 3.
     if (random == 3) {
-        document.getElementsByClassName("enemy")[0].style.display = "block";
-        document.getElementsByClassName("enemy")[0].style.margin = "-85rem 37rem;";
+        enemyChoose = 2;
+        document.getElementById("eC").style.display = "block";
+        document.getElementById("eC").style.margin = enemyChoose + "rem " + "70rem";
     }
 }
 // Si la imagen enemy está visible y la imagen carLight está visible.
 function enemyCollision() {
-    if (document.getElementsByClassName("enemy")[0].style.display == "block" && document.getElementById("carLight").style.display == "block") {
+    if (document.getElementById("eC").style.display == "block" && document.getElementById("carLight").style.display == "block") {
         // Si la posición de la imagen carLight es igual a la posición de la imagen enemy.
-        if (document.getElementById("carLight").style.margin == document.getElementsByClassName("enemy")[0].style.margin) {
-            // Se le quita la vida al jugador.
-            life--;
+        if (document.getElementById("carLight").style.margin == document.getElementById("eC").style.margin) {
+            scorePoints = 10 + scorePoints;
             // Se oculta la imagen carLight.
             document.getElementById("carLight").style.display = "none";
             // Se oculta la imagen enemy.
-            document.getElementsByClassName("enemy")[0].style.display = "none";
+            document.getElementById("eC").style.display = "none";
             // Se muestra la imagen explosion.
-            document.getElementsByClassName("explosion")[0].style.display = "block";
+            document.getElementById("Explode").style.display = "block";
             // Se reproduce el sonido de explosion.
             explosion.play();
+            document.getElementById("puntos").value = scorePoints;
             // Se oculta la imagen explosion.
             setTimeout(function () {
-                document.getElementsByClassName("explosion")[0].style.display = "none";
+                document.getElementById("Explode").style.display = "none";
             }, 1000);
+            enemySpawn();
         }
     }
 }
+
+setInterval(function () {
+    setTimeout(function () {
+        // Si el enemigo llega a la posición 0 o -1, se oculta.
+    if (i <= -23) {
+        i = 100;
+        document.getElementById("eC").style.display = "none";
+        enemySpawn();
+    }
+    if (document.getElementById("eC").style.display == "block") {
+        i--
+        document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
+        console.log(document.getElementById("eC").style.margin);
+        enemyCollision();
+    }
+    }, 250);
+}, 50);
+
 // prevenir que el carro se salga de la pantalla.
 function carOutOfScreen() {
-    // imprime en consola la posición de la imagen car.
-    console.log(document.getElementsByClassName("car")[0].style.margin);
     // Si la resolución de la pantalla es mayor a 800px.
     if (window.innerWidth > 1000) {
-        // imprime en consola la posición de la imagen car.
-        console.log(document.getElementsByClassName("car")[0].style.margin);
         // Si la posición de la imagen car es menor a 0.
-        if (movement[0] < 0) {
+        if (movement[0] < -10) {
             movement[0] = -1;
-            document.getElementsByClassName("car")[0].style.margin = movement[1] + "rem " + movement[0] + "rem";
+            document.getElementById("carro").style.margin = movement[1] + "rem " + movement[0] + "rem";
         }
         // Si la posición de la imagen car es mayor a 100.
         if (movement[0] > 70) {
