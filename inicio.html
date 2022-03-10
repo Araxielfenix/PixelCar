@@ -2,13 +2,14 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=1024, initial-scale=0.5">
+    <meta name="viewport" content="width=1024, initial-scale=0.5, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <script src="script.js"></script>
 </head>
 
 <body>
     <div id="area" class="mapa">
+        <div class="grass"></div>
         <div id="carretera" class="highway">
             <div id="lineas" class="lines">
                 <div id="lineasBlancas" class="whiteLines"></div>
@@ -39,28 +40,27 @@
                 <img src="sprite/light.png" class="light" id="carLight">
                 <audio id="honk" class="claxon" src="sounds/honk.mp3" preload="auto"></audio>
             </div>
-            <div id = "ECar" class = "Enemy">
-                <img src = "sprite/ECar.png" class = "enemyCar" id = "eC">
+            <div id="ECar" class="Enemy">
+                <img src="sprite/ECar.png" class="enemyCar" id="eC">
             </div>
         </div>
         <div id="cuadroControles" class="controllerSquare">
             <div class="controles" id="controller">
-                <div id = "upDown">
-                    <p>Arriba: W</p>
-                    <p>Abajo: S</p>
-                </div>
-                <div id = "leftRight">
-                    <p>Atrás: A</p>
-                    <p>Adelante: D</p>
-                    <p>Ataque: E</p>
+                <p class="Gameplay">GAMEPLAY</p>
+                <div class="keyboard">
+                    <img class="W" id="Keys" src="sprite/Keys/W.png">
+                    <img class="S" id="Keys" src="sprite/Keys/S.png">
+                    <img class="A" id="Keys" src="sprite/Keys/A.png">
+                    <img class="D" id="Keys" src="sprite/Keys/D.png">
+                    <img class="E" id="Keys" src="sprite/Keys/E.png">
                 </div>
             </div>
-            <div id = "Dpad" class = "DPad">
-                <img class = "Up" src = "sprite/DPad/Up.png" onclick="dpadUp()">
-                <img class = "Down" src = "sprite/DPad/Down.png" onclick="dpadDown()">
-                <img class = "Left" src = "sprite/DPad/Left.png" onclick="dpadLeft()">
-                <img class = "Right" src = "sprite/DPad/Right.png"  onclick="dpadRight()">
-                <img class = "Ataque" src = "sprite/DPad/ATK.png" onclick="dpadAttack()">
+            <div id="Dpad" class="DPad">
+                <img class="Up" src="sprite/DPad/Up.png" onclick="dpadUp()">
+                <img class="Down" src="sprite/DPad/Down.png" onclick="dpadDown()">
+                <img class="Left" src="sprite/DPad/Left.png" onclick="dpadLeft()">
+                <img class="Right" src="sprite/DPad/Right.png" onclick="dpadRight()">
+                <img class="Ataque" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
             </div>
         </div>
     </div>

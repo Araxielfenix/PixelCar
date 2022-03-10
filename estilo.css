@@ -26,6 +26,34 @@ div#Dpad.DPad{
     z-index: 1;
     margin: 10rem auto;
 }
+#Keys{
+  width: 3rem;
+  position: absolute;
+}
+.Gameplay{
+  margin: 0.3rem 3rem;
+  color: white;
+  font-weight: bolder;
+}
+.keyboard{
+  position: absolute;
+  margin: 1.5rem auto;
+}
+.W{
+  margin: auto 4rem;
+}
+.S{
+  margin: 3rem 4rem;
+}
+.A{
+  margin: 3rem 1.4rem;
+}
+.D{
+  margin: 3rem 6.7rem;
+}
+.E{
+  margin: 0rem 6.7rem;
+}
 body {
   background-color: slategray;
 }
@@ -88,6 +116,7 @@ div#ECar.Enemy {
     margin: 2rem 1.9rem;
 }
 #controller {
+  margin: 1rem 10rem;
   z-index: 2;
   border-style: dashed;
   border-color: white;
@@ -110,6 +139,14 @@ div#cuadroControles.controllerSquare {
     position: absolute;
     margin: 45rem 29%;
     z-index: -1;
+}
+.grass{
+  position: absolute;
+  background-color: #3f8e23;
+  margin: 2rem -1rem;
+  width: 100rem;
+  height: 44rem;
+  z-index: -2;
 }
 #carretera {
   position: absolute;
