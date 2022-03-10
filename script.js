@@ -17,6 +17,7 @@ window.onload = function () {
     document.getElementById("carLight").style.display = "none";
     document.getElementById("eC").style.display = "none";
     document.getElementById("Explode").style.display = "none";
+    document.getElementById("ExplodeN").style.display = "none";
     Honk();
     document.body.style.overflow = "hidden";
     // disable mouse selection 
@@ -269,20 +270,20 @@ function playerCollision() {
     if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
         if (document.getElementById("carLight").style.display == "none") {
             scorePoints - 10;
-            document.getElementById("puntos").value = scorePoints;
+            document.getElementById("puntos").value = scorePoints -10;
             if (scorePoints == 0) {
                 alert("Game Over");
                 location.reload();
             }
-            document.getElementById("Explode").style.margin = document.getElementById("nC").style.margin;
+            document.getElementById("ExplodeN").style.margin = document.getElementById("nC").style.margin;
             // Se muestra la imagen explosion.
-            document.getElementById("Explode").style.display = "block";
+            document.getElementById("ExplodeN").style.display = "block";
             // Se reproduce el sonido de explosion.
             explosion.play();
             document.getElementById("puntos").value = scorePoints;
             // Se oculta la imagen explosion.
             setTimeout(function () {
-                document.getElementById("Explode").style.display = "none";
+                document.getElementById("ExplodeN").style.display = "none";
             }, 1000);
             i = 100;
             enemySpawn();
@@ -293,17 +294,17 @@ function playerCollision() {
 setInterval(function () {
     setTimeout(function () {
         // Si el enemigo llega a la posición 0 o -1, se oculta.
-        playerCollision();
         if (i <= -23) {
             i = 100;
             document.getElementById("eC").style.display = "none";
             enemySpawn();
         }
         if (document.getElementById("eC").style.display == "block") {
-            i--
+            i--;
             document.getElementById("eC").style.margin = enemyChoose + "rem " + i + "rem";
             console.log(document.getElementById("eC").style.margin);
             enemyCollision();
+            playerCollision();
         }
     }, 250);
 }, 50);

@@ -105,6 +105,12 @@ div#ECar.Enemy {
   position: absolute;
   z-index: 1;
 }
+#Explode{
+  position: absolute;
+}
+#ExplodeN{
+  position: absolute;
+}
 .light {
   position: relative;
   margin: -12.79rem 5.5rem;
