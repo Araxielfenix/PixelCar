@@ -69,6 +69,8 @@ function Honk() {
 
 function dpadUp() {
     carOutOfScreen();
+    // Agrega los valores de la posicion del carro en un array con los valores x, y, w, h.
+    dim1 = document.getElementsByClassName("car")[0].getBoundingClientRect();
     if (motorsound == 0) {
         bgsound.play();
         carEngine.play();
@@ -148,6 +150,7 @@ function dpadAttack() {
 }
 document.onkeydown = function (e) {
     carOutOfScreen();
+
     if (e.keyCode != 0 && motorsound == 0) {
         bgsound.play();
         carEngine.play();
@@ -209,6 +212,7 @@ document.onkeydown = function (e) {
     }
 }
 
+
 document.onkeyup = function (e) {
     if (e.keyCode == 69 || e.keyCode == 101) {
         document.getElementById("carLight").style.margin = "-12.78rem 5.5rem";
@@ -238,11 +242,9 @@ function enemySpawn() {
         document.getElementById("eC").style.margin = enemyChoose + "rem " + "70rem";
     }
 }
-// Si la imagen enemy está visible y la imagen carLight está visible.
 function enemyCollision() {
-    // Si la posición de la imagen carLight es igual a la posición de la imagen enemy.
     if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
-        if (document.getElementById("eC").style.display == "block" && document.getElementById("carLight").style.display == "block") {
+        if (document.getElementById("carLight").style.display == "block") {
             scorePoints = 10 + scorePoints;
             // Se oculta la imagen carLight.
             document.getElementById("carLight").style.display = "none";
@@ -263,17 +265,27 @@ function enemyCollision() {
         }
     }
 }
-// Si carro choca con enemigo.
-function carCollision() {
-    // Si la posición de la imagen nC es igual a la posición de la imagen enemy.
+function playerCollision() {
     if (document.getElementById("eC").style.margin == (movement[1] + "rem " + movement[0] + "rem")) {
-        if (document.getElementById("nC").style.display == "block" && document.getElementById("eC").style.display == "block") {
+        if (document.getElementById("carLight").style.display == "none") {
             scorePoints - 10;
             document.getElementById("puntos").value = scorePoints;
             if (scorePoints == 0) {
                 alert("Game Over");
                 location.reload();
             }
+            document.getElementById("Explode").style.margin = document.getElementById("nC").style.margin;
+            // Se muestra la imagen explosion.
+            document.getElementById("Explode").style.display = "block";
+            // Se reproduce el sonido de explosion.
+            explosion.play();
+            document.getElementById("puntos").value = scorePoints;
+            // Se oculta la imagen explosion.
+            setTimeout(function () {
+                document.getElementById("Explode").style.display = "none";
+            }, 1000);
+            i = 100;
+            enemySpawn();
         }
     }
 }
@@ -281,6 +293,7 @@ function carCollision() {
 setInterval(function () {
     setTimeout(function () {
         // Si el enemigo llega a la posición 0 o -1, se oculta.
+        playerCollision();
         if (i <= -23) {
             i = 100;
             document.getElementById("eC").style.display = "none";
