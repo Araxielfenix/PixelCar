@@ -45,6 +45,10 @@
             </div>
         </div>
         <div id="cuadroControles" class="controllerSquare">
+            <did class = "scoreText">
+                <h1>Score:</h1>
+                <input class = "score"/>
+            </did>
             <div class="controles" id="controller">
                 <p class="Gameplay">GAMEPLAY</p>
                 <div class="keyboard">
@@ -56,11 +60,11 @@
                 </div>
             </div>
             <div id="Dpad" class="DPad">
-                <img class="Up" src="sprite/DPad/Up.png" onclick="dpadUp()">
-                <img class="Down" src="sprite/DPad/Down.png" onclick="dpadDown()">
-                <img class="Left" src="sprite/DPad/Left.png" onclick="dpadLeft()">
-                <img class="Right" src="sprite/DPad/Right.png" onclick="dpadRight()">
-                <img class="Ataque" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
+                <img class="Up" id = "touchButtons" src="sprite/DPad/Up.png" onclick="dpadUp()">
+                <img class="Down" id = "touchButtons" src="sprite/DPad/Down.png" onclick="dpadDown()">
+                <img class="Left" id = "touchButtons" src="sprite/DPad/Left.png" onclick="dpadLeft()">
+                <img class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onclick="dpadRight()">
+                <img class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
             </div>
         </div>
     </div>

@@ -13,6 +13,13 @@
     div#Dpad.DPad{
         display: none;
     }
+    .scoreText {
+      margin: 1rem -8rem;
+    }
+    .score {
+      width: 17rem;
+      height: 8.3rem;
+    }
 }
 @media only screen and (max-width: 1024px) {
     div#controller.controles {
@@ -21,6 +28,32 @@
     div#Dpad.DPad{
         display: block;
     }
+    div#cuadroControles.controllerSquare {
+    margin: 46rem 28%;
+    }
+    .scoreText {
+      margin: 2rem -18rem;
+    }
+    .score {
+      width: 17rem;
+      height: 9rem;
+    }
+}
+h1{
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+}
+.scoreText{
+  position: absolute;
+}
+.score {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  font-size: 5rem;
+  text-align: center;
 }
 div#Dpad.DPad{
     z-index: 1;
