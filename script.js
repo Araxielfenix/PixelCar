@@ -76,6 +76,7 @@ function dpadUp() {
         bgsound.play();
         carEngine.play();
         motorsound++;
+        enemySpawn();
     }
     switch (movement[1]) {
         case 26:
@@ -133,6 +134,7 @@ function dpadLeft() {
         bgsound.play();
         carEngine.play();
         motorsound++;
+        enemySpawn();
     }
     switch (movement[1]) {
         case 2:
