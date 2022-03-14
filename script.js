@@ -17,12 +17,11 @@ let i = 100;
 let iO = 100;
 let iO2 = 100;
 let MostrarInfo = 0;
+let vida = 100;
 
 window.onload = function () {
-    document.getElementById("tutorial").style.zIndex = "-2";
     document.getElementById("puntos").value = 0;
     document.getElementById("carLight").style.display = "none";
-    document.getElementById("tutorial").style.display = "none";
     document.getElementById("eC").style.display = "none";
     document.getElementById("Explode").style.display = "none";
     document.getElementById("ExplodeN").style.display = "none";
@@ -40,24 +39,6 @@ document.ondragstart = function () {
     return false;
 }
 
-function HelpHover() {
-    document.getElementById("ayuda").src = "sprite/HelpHover.png";
-}
-function Help() {
-    document.getElementById("ayuda").src = "sprite/Help.png";
-}
-function tutoInfo(){
-    if(MostrarInfo == 0){
-        document.getElementById("tutorial").style.display = "block";
-        document.getElementById("tutorial").style.zIndex = "0";
-        MostrarInfo = 1;
-    }
-    else{
-        document.getElementById("tutorial").style.display = "none";
-        document.getElementById("tutorial").style.zIndex = "-2";
-        MostrarInfo = 0;
-    }
-}
 setInterval(function () {
     document.getElementById("nC").src = "./sprite/carSpeed2.png";
     document.getElementById("eC").src = "./sprite/ECar.png";
@@ -337,7 +318,8 @@ function trashSpawn() {
 function enemyCollision() {
     if ((enemyChoose + "rem " + (i + 6) + "rem") == (movement[1] + "rem " + movement[0] + "rem")) {
         if (document.getElementById("carLight").style.display == "block") {
-            scorePoints = 10 + scorePoints;
+            vida = vida + 10;
+            scorePoints = scorePoints + 10;
             // Se oculta la imagen carLight.
             document.getElementById("carLight").style.display = "none";
             // Se oculta la imagen enemy.
@@ -360,7 +342,7 @@ function enemyCollision() {
 function playerCollision() {
     if ((movement[1] + "rem " + movement[0] + "rem") == (enemyChoose + "rem " + (i + 7) + "rem")) {
         if (document.getElementById("carLight").style.display == "none") {
-            scorePoints = scorePoints - 10;
+            vida = vida - 10;
             document.getElementById("puntos").value = scorePoints;
             document.getElementById("ExplodeN").style.margin = document.getElementById("nC").style.margin;
             // Se muestra la imagen explosion.
@@ -374,15 +356,14 @@ function playerCollision() {
             }, 1000);
             i = 100;
             enemySpawn();
-            if (scorePoints < -1) {
-                document.getElementById("puntos").value = "Game Over";
+            if (vida <= 0) {
                 alert("Game Over");
                 location.reload();
             }
         }
     }
-    if (movement[0] == (iO + 15) && movement[1] == obstacleChoose) {
-        scorePoints = scorePoints - 10;
+    if (movement[0] == (iO + 31) && movement[1] == obstacleChoose) {
+        vida = vida - 10;
         document.getElementById("puntos").value = scorePoints;
         document.getElementById("ExplodeN").style.margin = document.getElementById("nC").style.margin;
         // Se muestra la imagen explosion.
@@ -396,14 +377,13 @@ function playerCollision() {
         }, 1000);
         iO = 100;
         trashSpawn();
-        if (scorePoints < -1) {
-            document.getElementById("puntos").value = "Game Over";
+        if (vida <= 0) {
             alert("Game Over");
             location.reload();
         }
     }
-    if (movement[0] == (iO2 + 15) && movement[1] == obstacleChoose2) {
-        scorePoints = scorePoints - 10;
+    if (movement[0] == (iO2 + 31) && movement[1] == obstacleChoose2) {
+        vida = vida - 10;
         document.getElementById("puntos").value = scorePoints;
         document.getElementById("ExplodeN").style.margin = document.getElementById("nC").style.margin;
         // Se muestra la imagen explosion.
@@ -417,8 +397,7 @@ function playerCollision() {
         }, 1000);
         iO2 = 100;
         rockSpawn();
-        if (scorePoints < -1) {
-            document.getElementById("puntos").value = "Game Over";
+        if (vida <= 0) {
             alert("Game Over");
             location.reload();
         }
@@ -427,6 +406,21 @@ function playerCollision() {
 
 setInterval(function () {
     setTimeout(function () {
+        if (vida >= 80 && vida <= 100) {
+            document.getElementById("pasto").style.backgroundColor = "green";
+        }
+        if (vida >= 60 && vida <= 79) {
+            document.getElementById("pasto").style.backgroundColor = "yellow";
+        }
+        if (vida >= 40 && vida <= 59) {
+            document.getElementById("pasto").style.backgroundColor = "orange";
+        }
+        if (vida >= 20 && vida <= 39) {
+            document.getElementById("pasto").style.backgroundColor = "red";
+        }
+        if (vida <= 19) {
+            document.getElementById("pasto").style.backgroundColor = "black";
+        }
         enemyCollision();
         playerCollision();
         if (i <= -30) {

@@ -9,20 +9,7 @@
 
 <body>
     <div id="area" class="mapa">
-        <div>
-            <div class = "tuto" id = "tutorial">
-                <div class = "Enemigo">
-                    <label id = "labelEnemigo">Enemigo: Gana puntos al atacarlos.</label>
-                    <img loading="lazy" src="sprite/ECar.png" class="tutoEnemyCar">
-                </div>
-                <div class = "Obstaculos">
-                    <label id = "labelObstaculos">Obstaculos: Evitalos a toda costa.</label>
-                    <img loading="lazy" src="sprite/Rock.png" class="tutoObstacle1">
-                    <img loading="lazy" src="sprite/Trash.png" class="tutoObstacle2">
-                </div>
-            </div>
-        </div>
-        <div class="grass"></div>
+        <div class="grass" id = "pasto"></div>
         <div id="carretera" class="highway">
             <div id="lineas" class="lines">
                 <div id="lineasBlancas" class="whiteLines"></div>
@@ -93,7 +80,6 @@
                 <img loading="lazy" class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onclick="dpadRight()">
                 <img loading="lazy" class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
             </div>
-            <img loading="lazy" class="help" id="ayuda" src="sprite/Help.png" onmouseenter="HelpHover()" onmouseleave="Help()" onclick="tutoInfo()">
         </div>
     </div>
 </body>
