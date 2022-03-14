@@ -2,6 +2,21 @@
   0% {
     left: 4rem;
   }
+  12% {
+    left: 3rem;
+  }
+  25% {
+    left: 2rem;
+  }
+  50% {
+    left: 0rem;
+  }
+  75% {
+    left: -4rem;
+  }
+  87% {
+    left: -6rem;
+  }
   100% {
     left: -9rem;
   }
@@ -12,6 +27,13 @@
     }
     div#Dpad.DPad{
         display: none;
+    }
+    #ayuda{
+      position: absolute;
+      margin: -8.6rem 22.5rem;
+    }
+    .tuto{
+      margin: 12rem 30%;
     }
     .scoreText {
       margin: 1rem -8rem;
@@ -30,6 +52,13 @@
     }
     div#cuadroControles.controllerSquare {
     margin: 46rem 28%;
+    }
+    #ayuda{
+      position: absolute;
+      margin: 18.4rem -10.5rem;
+    }
+    .tuto{
+      margin: 11rem 12.5%;
     }
     .scoreText {
       margin: 0rem -18rem;
@@ -99,11 +128,27 @@ body {
 .car {
   position: absolute;
   z-index: 1;
-  margin: 37rem 0rem;
 }
 div#ECar.Enemy {
   position: absolute;
   z-index: 1;
+  width: 1rem;
+}
+div#obstacle1.obstacle{
+  position: absolute;
+  z-index: 1;
+  width: 15rem;
+}
+div#obstacle2.obstacle{
+  position: absolute;
+  z-index: 1;
+  width: 7rem;
+}
+#obstacle1{
+  width: 15rem;
+}
+#obstacle2{
+  width: 7rem;
 }
 #Explode{
   position: absolute;
@@ -113,7 +158,6 @@ div#ECar.Enemy {
 }
 .light {
   position: relative;
-  margin: -12.79rem 5.5rem;
 }
 #touchButtons{
     position: absolute;
@@ -156,6 +200,34 @@ div#ECar.Enemy {
 .attack{
     margin: 2rem 1.9rem;
 }
+.tuto{
+  border-style: dashed;
+  border-color: white;
+  position: absolute;
+  background-color: #20769d;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(12rem, auto);
+}
+.Enemigo{
+  grid-column: 1;
+  grid-row: 1;
+}
+.Obstaculos{
+  grid-column: 2;
+  grid-row: 1;
+}
+#labelEnemigo{
+  position: absolute;
+    margin: 3rem 6rem;
+  color: white;
+  font-weight: bold;
+}
+#labelObstaculos{
+  position: absolute;
+  margin: -1rem 6rem;
+  color: white;
+  font-weight: bold;
+}
 #controller {
   margin: 1rem 10rem;
   z-index: 2;
@@ -185,7 +257,7 @@ div#cuadroControles.controllerSquare {
   position: absolute;
   background-color: #3f8e23;
   margin: 2rem -1rem;
-  width: 100rem;
+  width: 101%;
   height: 44rem;
   z-index: -2;
 }
@@ -242,7 +314,7 @@ div#cuadroControles.controllerSquare {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(12rem, auto);
-  animation: velocidadLineas 125ms infinite linear;
+  animation: velocidadLineas 125ms infinite cubic-bezier(0.19, 1, 0.22, 1);
 }
 .whiteLines {
   background-color: white;

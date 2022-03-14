@@ -9,6 +9,19 @@
 
 <body>
     <div id="area" class="mapa">
+        <div>
+            <div class = "tuto" id = "tutorial">
+                <div class = "Enemigo">
+                    <label id = "labelEnemigo">Enemigo: Gana puntos al atacarlos.</label>
+                    <img loading="lazy" src="sprite/ECar.png" class="tutoEnemyCar">
+                </div>
+                <div class = "Obstaculos">
+                    <label id = "labelObstaculos">Obstaculos: Evitalos a toda costa.</label>
+                    <img loading="lazy" src="sprite/Rock.png" class="tutoObstacle1">
+                    <img loading="lazy" src="sprite/Trash.png" class="tutoObstacle2">
+                </div>
+            </div>
+        </div>
         <div class="grass"></div>
         <div id="carretera" class="highway">
             <div id="lineas" class="lines">
@@ -36,16 +49,26 @@
         </div>
         <div>
             <div id="carro" class="car">
-                <img src = "sprite/Explosion.gif" class="explosionNormal" id = "ExplodeN">
-                <img src="sprite/car.png" class="normalCar" id="nC">
-                <img src="sprite/light.png" class="light" id="carLight">
+                <img loading="lazy" src = "sprite/Explosion.gif" class="explosionNormal" id = "ExplodeN">
+                <img loading="lazy" src="sprite/car.png" class="normalCar" id="nC">
+                <img loading="lazy" src="sprite/light.png" class="light" id="carLight">
                 <audio id="honk" class="claxon" src="sounds/honk.mp3" preload="auto"></audio>
             </div>
         </div>
         <div>
             <div id="ECar" class="Enemy">
-                <img src = "sprite/Explosion.gif" class="explosion" id = "Explode">
-                <img src="sprite/ECar.png" class="enemyCar" id="eC">
+                <img loading="lazy" src = "sprite/Explosion.gif" class="explosion" id = "Explode">
+                <img loading="lazy" src="sprite/ECar.png" class="enemyCar" id="eC">
+            </div>
+        </div>
+        <div>
+            <div id = "obstacle1" class="obstacle">
+                <img loading="lazy" src="sprite/Rock.png" class="obstacle1" id="ob1">
+            </div>
+        </div>
+        <div>
+            <div id = "obstacle2" class="obstacle">
+                <img loading="lazy" src="sprite/Trash.png" class="obstacle2" id="ob2">
             </div>
         </div>
         <div id="cuadroControles" class="controllerSquare">
@@ -56,20 +79,21 @@
             <div class="controles" id="controller">
                 <p class="Gameplay">GAMEPLAY</p>
                 <div class="keyboard">
-                    <img class="W" id="Keys" src="sprite/Keys/W.png">
-                    <img class="S" id="Keys" src="sprite/Keys/S.png">
-                    <img class="A" id="Keys" src="sprite/Keys/A.png">
-                    <img class="D" id="Keys" src="sprite/Keys/D.png">
-                    <img class="E" id="Keys" src="sprite/Keys/E.png">
+                    <img loading="lazy" class="W" id="Keys" src="sprite/Keys/W.png">
+                    <img loading="lazy" class="S" id="Keys" src="sprite/Keys/S.png">
+                    <img loading="lazy" class="A" id="Keys" src="sprite/Keys/A.png">
+                    <img loading="lazy" class="D" id="Keys" src="sprite/Keys/D.png">
+                    <img loading="lazy" class="E" id="Keys" src="sprite/Keys/E.png">
                 </div>
             </div>
             <div id="Dpad" class="DPad">
-                <img class="Up" id = "touchButtons" src="sprite/DPad/Up.png" onclick="dpadUp()">
-                <img class="Down" id = "touchButtons" src="sprite/DPad/Down.png" onclick="dpadDown()">
-                <img class="Left" id = "touchButtons" src="sprite/DPad/Left.png" onclick="dpadLeft()">
-                <img class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onclick="dpadRight()">
-                <img class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
+                <img loading="lazy" class="Up" id = "touchButtons" src="sprite/DPad/Up.png" onclick="dpadUp()">
+                <img loading="lazy" class="Down" id = "touchButtons" src="sprite/DPad/Down.png" onclick="dpadDown()">
+                <img loading="lazy" class="Left" id = "touchButtons" src="sprite/DPad/Left.png" onclick="dpadLeft()">
+                <img loading="lazy" class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onclick="dpadRight()">
+                <img loading="lazy" class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
             </div>
+            <img loading="lazy" class="help" id="ayuda" src="sprite/Help.png" onmouseenter="HelpHover()" onmouseleave="Help()" onclick="tutoInfo()">
         </div>
     </div>
 </body>
