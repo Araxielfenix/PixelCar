@@ -51,7 +51,7 @@
         display: block;
     }
     div#cuadroControles.controllerSquare {
-    margin: 46rem 28%;
+      margin: 57rem 40%;
     }
     #ayuda{
       position: absolute;
@@ -61,7 +61,7 @@
       margin: 11rem 12.5%;
     }
     .scoreText {
-      margin: 0rem -18rem;
+      margin: -10rem -18rem;
     }
     .score {
       width: 17rem;
@@ -87,7 +87,6 @@ h1{
 }
 div#Dpad.DPad{
     z-index: 1;
-    margin: 12rem 100%;
 }
 #Keys{
   width: 3rem;
