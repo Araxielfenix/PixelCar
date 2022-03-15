@@ -74,11 +74,11 @@
                 </div>
             </div>
             <div id="Dpad" class="DPad">
-                <img loading="lazy" class="Up" id = "touchButtons" src="sprite/DPad/Up.png" onclick="dpadUp()">
-                <img loading="lazy" class="Down" id = "touchButtons" src="sprite/DPad/Down.png" onclick="dpadDown()">
-                <img loading="lazy" class="Left" id = "touchButtons" src="sprite/DPad/Left.png" onclick="dpadLeft()">
-                <img loading="lazy" class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onclick="dpadRight()">
-                <img loading="lazy" class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onclick="dpadAttack()">
+                <img loading="lazy" class="Up" id = "touchButtons" src="sprite/DPad/Up.png" onmousedown="touchDpad()" onmouseup="touchDpadLeave()" onclick="dpadUp()">
+                <img loading="lazy" class="Down" id = "touchButtons" src="sprite/DPad/Down.png" onmousedown="touchDpad()" onmouseup="touchDpadLeave()" onclick="dpadDown()">
+                <img loading="lazy" class="Left" id = "touchButtons" src="sprite/DPad/Left.png" onmousedown="touchDpad()" onmouseup="touchDpadLeave()" onclick="dpadLeft()">
+                <img loading="lazy" class="Right" id = "touchButtons" src="sprite/DPad/Right.png" onmousedown="touchDpad()" onmouseup="touchDpadLeave()" onclick="dpadRight()">
+                <img loading="lazy" class="Ataque" id = "touchButtons" src="sprite/DPad/ATK.png" onmousedown="touchDpad()" onmouseup="touchDpadLeave()" onclick="dpadAttack()">
             </div>
         </div>
     </div>
